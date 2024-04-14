@@ -1,0 +1,8 @@
+{
+  "inputSpec": "/path/to/your/input-spec.json",
+  "lang": "java",
+  "output": "D:\\6_sem_java\\food_delivery\\food_delivery\\api\\api1.yaml",
+  "modelNameSuffix": "DTO",
+  "apiPackage": "com.example.api",
+  "modelPackage": "com.example.model"
+}

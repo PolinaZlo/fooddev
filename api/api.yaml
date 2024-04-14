@@ -1,0 +1,99 @@
+openapi: "3.0.0"
+info:
+  title: "Food Delivery API"
+  description: "API for managing food data"
+  version: "1.0.0"
+paths:
+  /food/save:
+    post:
+      summary: "Save a new food item"
+      operationId: save
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FoodDto"
+      responses:
+        '200':
+          description: "Food saved successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Food"
+  /food/findById:
+    get:
+      summary: "Find a food item by ID"
+      operationId: "findFoodById"
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: "Food item found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Food"
+  /food/getAll:
+    get:
+      summary: "Get all food items"
+      operationId: "getAllFood"
+      responses:
+        '200':
+          description: "List of food items"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Food"
+  /food/update:
+    put:
+      summary: "Update an existing food item"
+      operationId: "updateFood"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Food"
+      responses:
+        '200':
+          description: "Food item updated successfully"
+  /food/delete:
+    delete:
+      summary: "Delete a food item"
+      operationId: "deleteFood"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Food"
+      responses:
+        '200':
+          description: "Food item deleted successfully"
+components:
+  schemas:
+    FoodDto:
+      type: "object"
+      properties:
+        foodTitle:
+          type: "string"
+        foodPrice:
+          type: "double"
+    Food:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        title:
+          type: "string"
+        price:
+          type: "double"
